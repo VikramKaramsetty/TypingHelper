@@ -1,10 +1,10 @@
-import './Right.css';
+import './styles.css';
 
 const Right = props => {
     document.body.style = 'background: green;';
     return (
         <div>
-            <h1>Right</h1>
+            <h1 className='secondH1'>Right</h1>
         </div>
     );
 };

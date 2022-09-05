@@ -1,5 +1,5 @@
-import Right from './Right/Right';
-import Wrong from './Wrong/Wrong';
+import Right from './Right';
+import Wrong from './Wrong';
 
 const RightOrWrong = props =>  {
     let alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
