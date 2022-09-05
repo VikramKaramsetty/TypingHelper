@@ -8,20 +8,25 @@ const randomNumberInRange = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+
+
 export default class App extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            letter: 'A',
+            letter: -1,
             pNum: -1,
-            tNum: 0
+            tNum: 0,
+            // rights: 0,
+            // wrongs: 0
         }
         this.keyDown = this.keyDown.bind(this);
     }
+    
 
     componentDidMount() {
-        this.setState({ letter: 'A', pNum: -1, tNum: randomNumberInRange(0, 26) })
+        this.setState({ letter: 'A', pNum: -1, tNum: randomNumberInRange(0, 26)})
     }
 
     keyDown(e) {
@@ -29,6 +34,18 @@ export default class App extends Component {
             letter: e.key,
             pNum: this.state.tNum,
             tNum: randomNumberInRange(0, 26)
+            // rights: this.state.rights,
+            // wrongs: this.state.wrongs
+        })
+    }
+
+    updateProgress(rights, wrongs) {
+        this.setState({
+            letter: this.letter,
+            pNum: this.state.pNum,
+            tNum: this.state.tNum,
+            // rights: this.state.rights+rights,
+            // wrongs: this.state.wrongs+wrongs
         })
     }
 
@@ -37,14 +54,18 @@ export default class App extends Component {
         return (
             <div>
               <RandomLetter nums={this.state.tNum}/>
-              <RightOrWrong keyPress={this.state.letter} nums={this.state.pNum}/>
+              <RightOrWrong keyPress={this.state.letter} nums={this.state.pNum} />
               letter: {letter}
-              <br />
+              <br    />
               tNum: {tNum}
               <br />
               pNum: {pNum}
               <br />
               <KeyPressed keyDown={this.keyDown} />
+              <br />
+              {/* rights: {rights}
+              <br />
+              wrongs: {wrongs} */}
             </div>
         );
     }
