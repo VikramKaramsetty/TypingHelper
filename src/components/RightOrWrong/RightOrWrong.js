@@ -11,10 +11,11 @@ const RightOrWrong = props =>  {
 
     } else if(props.keyPress === " " && props.nums === 26) {
         console.log("right, spacebar clicked")
+        // props.func(1,0);
         return <Right />
     } else if(props.keyPress === alphabet[props.nums]) {
         console.log("right");
-        // props.func(1,0);
+        props.func(1,0);
         
         return <Right />
     } else {
