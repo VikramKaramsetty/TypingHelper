@@ -1,4 +1,4 @@
-import { Component, useEffect } from 'react'
+import { Component, useEffect, Text } from 'react'
 import './App.css';
 import RandomLetter from './components/RandomLetter/RandomLetter';
 import Right from './components/RightOrWrong/Right';
@@ -88,26 +88,28 @@ export default class App extends Component {
             rightorwrong = <Wrong />
         }
 
-        // let percentagee = this.state.rights/this.state.rights+this.state.wrongs;
-        let perc = percentage.toFixed(2)
+        // PERCENTAGE IS ONE BEHIND, SIMILAR TO PREVIOUS ISSUE
+        let perc = (percentage*100).toFixed(0) // cutting the percentage up till the last 2 decimal points
         return (
             <div>
                 <RandomLetter nums={this.state.tNum} />
                 {rightorwrong}
-                {/* <RightOrWrong keyPress={this.state.letter} nums={this.state.pNum} func={this.updateProgress} /> */}
-                letter: {letter}
+                
+                {/* letter: {letter}
                 <br />
                 tNum: {tNum}
                 <br />
                 pNum: {pNum}
-                <br />
+                <br /> */}
                 <KeyPressed keyDown={this.keyDown} />
                 <br />
-                rights: {rights}
-                <br />
-                wrongs: {wrongs}
-                <br />
-                percentage: {perc}
+                <div className='info'>
+                    Correct: {rights}         Incorrect: {wrongs}
+                    <br />
+                    Percentage Correct: {perc}%
+                    
+                </div>
+                
             </div>
         );
     }
