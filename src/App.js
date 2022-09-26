@@ -1,7 +1,6 @@
 import { Component, useEffect } from 'react'
 import './App.css';
 import RandomLetter from './components/RandomLetter/RandomLetter';
-import RightOrWrong from './components/RightOrWrong/RightOrWrong';
 import Right from './components/RightOrWrong/Right';
 import Wrong from './components/RightOrWrong/Wrong';
 
@@ -22,25 +21,27 @@ export default class App extends Component {
             tNum: 0,
             rights: 0,
             wrongs: 0,
-            rightOrWrong: false
+            rightOrWrong: false,
+            percentage : 0
         }
         this.keyDown = this.keyDown.bind(this);
-        this.updateProgress = this.updateProgress.bind(this);
     }
 
 
     componentDidMount() {
-        this.setState({ letter: 'A', pNum: -1, tNum: randomNumberInRange(0, 26), rights: 0, wrongs: 0, rightOrWrong:false })
+        this.setState({ letter: 'A', pNum: -1, tNum: randomNumberInRange(0, 26), rights: 0, wrongs: 0, rightOrWrong:false, percentage:0 })
     }
 
     keyDown(e) {
+
         var newState = {
             letter: e.key,
             pNum: this.state.tNum,
             tNum: randomNumberInRange(0, 26),
             rights: this.state.rights,
             wrongs: this.state.wrongs,
-            rightOrWrong: false
+            rightOrWrong: false,
+            percentage: this.state.rights/(this.state.rights+this.state.wrongs)
         }
 
 
@@ -77,18 +78,8 @@ export default class App extends Component {
         this.setState(newState);
     }
 
-    updateProgress(rights, wrongs) {
-        this.setState({
-            letter: this.letter,
-            pNum: this.state.pNum,
-            tNum: this.state.tNum,
-            rights: this.state.rights + rights,
-            wrongs: this.state.wrongs + wrongs
-        })
-    }
-
     render() {
-        const { letter, pNum, tNum, rights, wrongs, rightOrWrong } = this.state;
+        const { letter, pNum, tNum, rights, wrongs, rightOrWrong, percentage } = this.state;
 
         let rightorwrong = true;
         if(rightOrWrong) {
@@ -97,6 +88,8 @@ export default class App extends Component {
             rightorwrong = <Wrong />
         }
 
+        // let percentagee = this.state.rights/this.state.rights+this.state.wrongs;
+        let perc = percentage.toFixed(2)
         return (
             <div>
                 <RandomLetter nums={this.state.tNum} />
@@ -113,6 +106,8 @@ export default class App extends Component {
                 rights: {rights}
                 <br />
                 wrongs: {wrongs}
+                <br />
+                percentage: {perc}
             </div>
         );
     }
