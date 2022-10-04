@@ -1,5 +1,6 @@
 import { Component, useEffect } from 'react'
 import './FirstStep.css';
+import { Link, useNavigate } from 'react-router-dom';
 import RandomLetter from '../../components/RandomLetter/RandomLetter';
 import Right from '../../components/RightOrWrong/Right';
 import Wrong from '../../components/RightOrWrong/Wrong';
@@ -21,14 +22,14 @@ class FirstStep extends Component {
             rights: 0,
             wrongs: 0,
             rightOrWrong: false,
-            percentage : 0
+            percentage: 0
         }
         this.keyDown = this.keyDown.bind(this);
     }
 
 
     componentDidMount() {
-        this.setState({ letter: 'A', pNum: -1, tNum: randomNumberInRange(0, 26), rights: 0, wrongs: 0, rightOrWrong:false, percentage:0 })
+        this.setState({ letter: 'A', pNum: -1, tNum: randomNumberInRange(0, 26), rights: 0, wrongs: 0, rightOrWrong: false, percentage: 0 })
     }
 
     keyDown(e) {
@@ -40,16 +41,14 @@ class FirstStep extends Component {
             rights: this.state.rights,
             wrongs: this.state.wrongs,
             rightOrWrong: false,
-            percentage: this.state.rights/(this.state.rights+this.state.wrongs)
+            percentage: this.state.rights / (this.state.rights + this.state.wrongs)
         }
 
 
         let alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'SPACEBAR'];
 
-        if(newState.rights+newState.wrongs === 30) {
-            console.log("over 30")
-            // sends to another
-        }
+
+
 
         document.body.style = 'background: white';
         if (newState.pNum === -1) { // making first time you load empty
@@ -58,7 +57,7 @@ class FirstStep extends Component {
             console.log("right, spacebar clicked")
             newState.rights++;
             // return <Right />
-            newState.rightOrWrong=true;
+            newState.rightOrWrong = true;
         } else if (newState.letter === alphabet[newState.pNum]) {
             console.log("right");
             // this.updateProgress(1,0);
@@ -82,20 +81,20 @@ class FirstStep extends Component {
         const { letter, pNum, tNum, rights, wrongs, rightOrWrong, percentage } = this.state;
 
         let rightorwrong = true;
-        if(rightOrWrong) {
+        if (rightOrWrong) {
             rightorwrong = <Right />
         } else {
             rightorwrong = <Wrong />
         }
 
         // PERCENTAGE IS ONE BEHIND, SIMILAR TO PREVIOUS ISSUE
-        let perc = (percentage*100).toFixed(0) // cutting the percentage up till the last 2 decimal points
-        
+        let perc = (percentage * 100).toFixed(0) // cutting the percentage up till the last 2 decimal points
+
         return (
             <div>
                 <RandomLetter nums={this.state.tNum} />
                 {rightorwrong}
-                
+
                 {/* letter: {letter}
                 <br />
                 tNum: {tNum}
@@ -108,9 +107,9 @@ class FirstStep extends Component {
                     Correct: {rights}         Incorrect: {wrongs}
                     <br />
                     Percentage Correct: {perc}%
-                    
+
                 </div>
-                
+
             </div>
         );
     }

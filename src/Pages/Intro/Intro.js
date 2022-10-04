@@ -19,7 +19,7 @@ function Intro() {
       <h2>Keep your left pointer finger on the F key, and your right pointer finger on the J key.</h2>
       <h2>From here, you want to lay the rest of your fingers on ASD and KL;</h2>
       <h2>This method of typing makes it the easiest to reach other letters.</h2>
-      <h2>Now, I recommend putting a paper over your keyboard (or practicing till you can do so) and trying to get the letters on the keyboard right. This will help reduce the tendancy to look at the keyboard.</h2>
+      <h2>Now, I recommend putting a paper over your keyboard (or practicing till you can do so) and trying to get the letters on the keyboard right. This will help reduce the tendency to look at the keyboard.</h2>
       <button className='button-4' onClick={() => { navigate("/First-Step") }}>Part One</button>
     </motion.div>
 
