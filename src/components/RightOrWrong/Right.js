@@ -1,4 +1,5 @@
 import './styles.css';
+import React from 'react';
 
 const Right = props => {
     document.body.style = 'background: green;';

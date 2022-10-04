@@ -1,8 +1,9 @@
-import { Component, useEffect, Text } from 'react'
+import { Component, useEffect } from 'react'
 import './FirstStep.css';
-import RandomLetter from '../components/RandomLetter/RandomLetter';
-import Right from '../components/RightOrWrong/Right';
-import Wrong from '../components/RightOrWrong/Wrong';
+import RandomLetter from '../../components/RandomLetter/RandomLetter';
+import Right from '../../components/RightOrWrong/Right';
+import Wrong from '../../components/RightOrWrong/Wrong';
+import React from 'react';
 
 const randomNumberInRange = (min, max) => {
     // 👇️ get number between min (inclusive) and max (inclusive)
@@ -77,6 +78,7 @@ class FirstStep extends Component {
     }
 
     render() {
+        // eslint-disable-next-line
         const { letter, pNum, tNum, rights, wrongs, rightOrWrong, percentage } = this.state;
 
         let rightorwrong = true;
@@ -88,6 +90,7 @@ class FirstStep extends Component {
 
         // PERCENTAGE IS ONE BEHIND, SIMILAR TO PREVIOUS ISSUE
         let perc = (percentage*100).toFixed(0) // cutting the percentage up till the last 2 decimal points
+        
         return (
             <div>
                 <RandomLetter nums={this.state.tNum} />
