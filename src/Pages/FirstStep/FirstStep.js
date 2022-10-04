@@ -5,6 +5,7 @@ import RandomLetter from '../../components/RandomLetter/RandomLetter';
 import Right from '../../components/RightOrWrong/Right';
 import Wrong from '../../components/RightOrWrong/Wrong';
 import React from 'react';
+import IntermissionTransmitter1 from '../Intermission 1/Intermission1';
 
 const randomNumberInRange = (min, max) => {
     // 👇️ get number between min (inclusive) and max (inclusive)
@@ -22,14 +23,15 @@ class FirstStep extends Component {
             rights: 0,
             wrongs: 0,
             rightOrWrong: false,
-            percentage: 0
+            percentage: 0,
+            isFifty: false
         }
         this.keyDown = this.keyDown.bind(this);
     }
 
 
     componentDidMount() {
-        this.setState({ letter: 'A', pNum: -1, tNum: randomNumberInRange(0, 26), rights: 0, wrongs: 0, rightOrWrong: false, percentage: 0 })
+        this.setState({ letter: 'A', pNum: -1, tNum: randomNumberInRange(0, 26), rights: 0, wrongs: 0, rightOrWrong: false, percentage: 0, isFifty: false })
     }
 
     keyDown(e) {
@@ -41,14 +43,15 @@ class FirstStep extends Component {
             rights: this.state.rights,
             wrongs: this.state.wrongs,
             rightOrWrong: false,
-            percentage: this.state.rights / (this.state.rights + this.state.wrongs)
+            percentage: this.state.rights / (this.state.rights + this.state.wrongs),
+            isFifty: this.state.isFifty
         }
 
+        if (newState.rights + newState.wrongs === 30) {
+            newState.isFifty = true;
+        }
 
         let alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'SPACEBAR'];
-
-
-
 
         document.body.style = 'background: white';
         if (newState.pNum === -1) { // making first time you load empty
@@ -78,7 +81,7 @@ class FirstStep extends Component {
 
     render() {
         // eslint-disable-next-line
-        const { letter, pNum, tNum, rights, wrongs, rightOrWrong, percentage } = this.state;
+        const { letter, pNum, tNum, rights, wrongs, rightOrWrong, percentage, isFifty } = this.state;
 
         let rightorwrong = true;
         if (rightOrWrong) {
@@ -90,8 +93,14 @@ class FirstStep extends Component {
         // PERCENTAGE IS ONE BEHIND, SIMILAR TO PREVIOUS ISSUE
         let perc = (percentage * 100).toFixed(0) // cutting the percentage up till the last 2 decimal points
 
+        let nav;
+        if (isFifty === true) {
+            nav = <IntermissionTransmitter1 />
+        }
+
         return (
             <div>
+                {nav}
                 <RandomLetter nums={this.state.tNum} />
                 {rightorwrong}
 
