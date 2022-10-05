@@ -6,6 +6,7 @@ import Right from '../../components/RightOrWrong/Right';
 import Wrong from '../../components/RightOrWrong/Wrong';
 import React from 'react';
 import IntermissionTransmitter1 from '../Intermission 1/Intermission1';
+import Insert from './Insert';
 
 const randomNumberInRange = (min, max) => {
     // 👇️ get number between min (inclusive) and max (inclusive)
@@ -93,50 +94,19 @@ class FirstStep extends Component {
         // PERCENTAGE IS ONE BEHIND, SIMILAR TO PREVIOUS ISSUE
         let perc = (percentage * 100).toFixed(0) // cutting the percentage up till the last 2 decimal points
 
-        let nav;
+        let nav = <Insert tNum={tNum} rights={rights} incorrect={wrongs} perc={perc} rightOrWrong={rightOrWrong} keyDown={this.keyDown}/>;
         if (isFifty === true) {
             nav = <IntermissionTransmitter1 />
-        }
+        } 
 
         return (
             <div>
                 {nav}
-                <RandomLetter nums={this.state.tNum} />
-                {rightorwrong}
-
-                {/* letter: {letter}
-                <br />
-                tNum: {tNum}
-                <br />
-                pNum: {pNum}
-                <br /> */}
-                <KeyPressed keyDown={this.keyDown} />
-                <br />
-                <div className='info'>
-                    Correct: {rights}         Incorrect: {wrongs}
-                    <br />
-                    Percentage Correct: {perc}%
-
-                </div>
-
+                
             </div>
         );
     }
 }
 
-const KeyPressed = props => {
 
-    useEffect(() => { // taking input and then removing it so it doesn't repeat 
-        window.addEventListener('keydown', detectKeyDown);
-        return () => {
-            window.removeEventListener('keydown', detectKeyDown);
-        };
-    }, []);
-
-    var detectKeyDown = (e) => { // what to do after detecting input
-        props.keyDown(e);
-    }
-
-    return <div></div>
-}
 export default FirstStep;
