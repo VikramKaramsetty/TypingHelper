@@ -96,7 +96,7 @@ class FirstStep extends Component {
 
         let nav = <Insert tNum={tNum} rights={rights} incorrect={wrongs} perc={perc} rightOrWrong={rightOrWrong} keyDown={this.keyDown}/>;
         if (isFifty === true) {
-            nav = <IntermissionTransmitter1 />
+            nav = <IntermissionTransmitter1 rights={rights} incorrect={wrongs} perc={perc}/>
         } 
 
         return (
