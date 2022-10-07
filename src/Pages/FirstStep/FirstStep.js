@@ -5,7 +5,7 @@ import RandomLetter from '../../components/RandomLetter/RandomLetter';
 import Right from '../../components/RightOrWrong/Right';
 import Wrong from '../../components/RightOrWrong/Wrong';
 import React from 'react';
-import IntermissionTransmitter1 from '../Intermission 1/Intermission1';
+import Intermission1 from '../../components/Intermission 1/Intermission1';
 import Insert from './Insert';
 
 const randomNumberInRange = (min, max) => {
@@ -48,7 +48,7 @@ class FirstStep extends Component {
             isFifty: this.state.isFifty
         }
 
-        if (newState.rights + newState.wrongs === 30) {
+        if (newState.rights + newState.wrongs === 49) {
             newState.isFifty = true;
         }
 
@@ -96,7 +96,7 @@ class FirstStep extends Component {
 
         let nav = <Insert tNum={tNum} rights={rights} incorrect={wrongs} perc={perc} rightOrWrong={rightOrWrong} keyDown={this.keyDown}/>;
         if (isFifty === true) {
-            nav = <IntermissionTransmitter1 rights={rights} incorrect={wrongs} perc={perc}/>
+            nav = <Intermission1 rights={rights} incorrect={wrongs} perc={perc}/>
         } 
 
         return (

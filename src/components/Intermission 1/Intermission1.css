@@ -1,0 +1,19 @@
+.inter {
+    text-align: center;
+    margin: 5%;
+}
+
+
+.inter h1 {
+    font-size: 130%;
+    font-weight: 700;
+}
+
+.inter h1 p {
+    padding:10%;
+}
+
+.inter h2 {
+    font-size: 100%;
+    font-weight: 400;
+}
