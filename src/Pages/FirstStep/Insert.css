@@ -1,0 +1,41 @@
+.circle {
+    height: 25px;
+    width: 25px;
+    background-color: rgba(68, 68, 231, 0.897);
+    border-radius: 50%;
+    display: inline-block;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
+.container {
+    margin: 5%;
+}
+
+.handsContainer {
+    display:flex;
+    flex-direction: row;
+    direction: ltr;
+}
+
+#space {
+    width:30%;
+}
+
+.handsContainer img {
+    width: 30%;
+}
+
+.lefthand {
+    display: flex;
+    direction: ltr;
+}
+
+.rightHandContainer {
+    display: flex;
+    direction:rtl;
+
+    margin-right: 5%;
+}
