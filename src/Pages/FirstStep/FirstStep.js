@@ -1,9 +1,5 @@
-import { Component, useEffect } from 'react'
+import { Component } from 'react'
 import './FirstStep.css';
-import { Link, useNavigate } from 'react-router-dom';
-import RandomLetter from '../../components/RandomLetter/RandomLetter';
-import Right from '../../components/RightOrWrong/Right';
-import Wrong from '../../components/RightOrWrong/Wrong';
 import React from 'react';
 import Intermission1 from '../../components/Intermission 1/Intermission1';
 import Insert from './Insert';
@@ -23,6 +19,7 @@ class FirstStep extends Component {
             tNum: 0,
             rights: 0,
             wrongs: 0,
+            first: true,
             rightOrWrong: false,
             percentage: 0,
             isFifty: false
@@ -32,7 +29,7 @@ class FirstStep extends Component {
 
 
     componentDidMount() {
-        this.setState({ letter: 'A', pNum: -1, tNum: randomNumberInRange(0, 26), rights: 0, wrongs: 0, rightOrWrong: false, percentage: 0, isFifty: false })
+        this.setState({ letter: 'A', pNum: -1, tNum: randomNumberInRange(0, 26), rights: 0, wrongs: 0, rightOrWrong: false, percentage: 0, isFifty: false, first: true })
     }
 
     keyDown(e) {
@@ -45,7 +42,8 @@ class FirstStep extends Component {
             wrongs: this.state.wrongs,
             rightOrWrong: false,
             percentage: this.state.rights / (this.state.rights + this.state.wrongs),
-            isFifty: this.state.isFifty
+            isFifty: this.state.isFifty,
+            first: true,
         }
 
         if (newState.rights + newState.wrongs === 49) {
@@ -62,19 +60,19 @@ class FirstStep extends Component {
             newState.rights++;
             // return <Right />
             newState.rightOrWrong = true;
+            newState.first = false;
         } else if (newState.letter === alphabet[newState.pNum]) {
             console.log("right");
             // this.updateProgress(1,0);
             newState.rights++;
             // return <Right />
-
+            newState.first=false;
             newState.rightOrWrong = true;
         } else {
             console.log("wrong");
-            // this.updateProgress(0,1);
             newState.wrongs++;
-            // return <Wrong />
             newState.rightOrWrong = false;
+            newState.first = false;
         }
 
         this.setState(newState);
@@ -82,19 +80,12 @@ class FirstStep extends Component {
 
     render() {
         // eslint-disable-next-line
-        const { letter, pNum, tNum, rights, wrongs, rightOrWrong, percentage, isFifty } = this.state;
-
-        let rightorwrong = true;
-        if (rightOrWrong) {
-            rightorwrong = <Right />
-        } else {
-            rightorwrong = <Wrong />
-        }
+        const {tNum, rights, wrongs, rightOrWrong, percentage, isFifty, first } = this.state;
 
         // PERCENTAGE IS ONE BEHIND, SIMILAR TO PREVIOUS ISSUE
         let perc = (percentage * 100).toFixed(0) // cutting the percentage up till the last 2 decimal points
 
-        let nav = <Insert tNum={tNum} rights={rights} incorrect={wrongs} perc={perc} rightOrWrong={rightOrWrong} keyDown={this.keyDown}/>;
+        let nav = <Insert tNum={tNum} rights={rights} incorrect={wrongs} perc={perc} rightOrWrong={rightOrWrong} keyDown={this.keyDown} first={first}/>;
         if (isFifty === true) {
             nav = <Intermission1 rights={rights} incorrect={wrongs} perc={perc}/>
         } 

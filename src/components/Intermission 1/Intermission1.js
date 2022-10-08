@@ -1,11 +1,8 @@
 import React from 'react'
 import { motion } from 'framer-motion/dist/framer-motion';
 import './Intermission1.css';
-import { useNavigate } from 'react-router-dom';
-import Insert from '../../Pages/FirstStep/Insert';
 
 function Intermission1(props) {
-    const navigate = useNavigate();
     return (
         <motion.div
             className="inter"

@@ -6,6 +6,7 @@ import RandomLetter from '../../components/RandomLetter/RandomLetter';
 import './Insert.css'
 import rightHand from '../../resources/RightHand.png';
 import leftHand from '../../resources/LeftHand.png';
+import None from '../../components/RightOrWrong/None';
 
 
 function Insert(props) {
@@ -27,7 +28,9 @@ function Insert(props) {
     }
 
     let rightorwrong = true;
-    if (props.rightOrWrong) {
+    if(props.first) {
+        rightorwrong = <None/>
+    } else if (props.rightOrWrong) {
         rightorwrong = <Right />
     } else {
         rightorwrong = <Wrong />
@@ -41,24 +44,21 @@ function Insert(props) {
 
             <KeyPressed keyDown={props.keyDown} />
             <br />
-            <div className='info'>
-                Correct: {props.rights}         Incorrect: {props.incorrect}
-                <br />
-                Percentage Correct: {props.perc}%
-
-            </div>
-            <div className='container'>
-                <div className='circle'></div>
-            </div>
-            <div className='handsContainer'>
-                <img src={leftHand} className="lefthand"></img>
-                {/* <div id="space"></div> */}
-                <div className='rightHandContainer'>
-                    <img src={rightHand} className="righthand"></img>
+            <div className='bigdiv'>
+                <div className='handsContainer'>
+                    <img src={leftHand} className="lefthand" alt='Left Hand'></img>
                 </div>
 
-            </div>
+                <div className='info'>
+                    Correct: {props.rights}         Incorrect: {props.incorrect}
+                    <br />
+                    Percentage Correct: {props.perc}%
+                </div>
 
+                <div className='handsContainer'>
+                    <img src={rightHand} className="righthand" alt='Right Hand'></img>
+                </div>
+            </div>
         </div>
     )
 }
