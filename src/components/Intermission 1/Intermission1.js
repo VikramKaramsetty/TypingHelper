@@ -1,5 +1,5 @@
 import React from 'react'
-import { motion } from 'framer-motion/dist/framer-motion';
+import { motion } from 'framer-motion';
 import './Intermission1.css';
 
 function Intermission1(props) {

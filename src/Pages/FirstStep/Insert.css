@@ -1,14 +1,4 @@
-.circle {
-    height: 25px;
-    width: 25px;
-    background-color: rgba(68, 68, 231, 0.897);
-    border-radius: 50%;
-    display: inline-block;
-    border-left: 2px solid black;
-    border-right: 2px solid black;
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
-}
+
 
 .bigdiv {
     display:flex;
@@ -34,13 +24,71 @@
     top: 40%;
 }
 
-/* .info{
-    text-align: center;
-    font-size: 20;
-    font-weight: 400;
-    margin:1%;
-} */
-/* .handsContainer img {
-    width:10%;
-} */
 
+/* CIRCLE STYLING */
+.circle {
+    height: 15px;
+    width: 15px;
+    background-color: rgba(148, 147, 145, 0.897);
+    border-radius: 50%;
+    display: inline-block;
+    border-left: 2.5px solid rgba(91, 91, 91, 0.68);
+    border-right: 2.5px solid rgb(91, 91, 91, 0.68);
+    border-top: 2.5px solid rgb(91, 91, 91, 0.68);
+    border-bottom: 2.5px solid rgb(91, 91, 91, 0.68);
+    position:absolute;
+}
+
+
+/* LEFT HAND */
+#leftPinky {    
+    top:46%;
+    left: 2.8vw;
+}
+
+#leftRingFinger {
+    left:6vw;
+    top:38%;
+}
+
+#leftMiddleFinger {
+    left: 10.5vw;
+    top: 34%;
+}
+
+#leftPointerFinger {
+    left: 15.8vw;
+    top: 38%;
+}
+
+#leftThumb {
+    left: 20vw;
+    top: 56%;
+}
+
+/* RIGHT HAND */
+
+#rightPinky {    
+    top:47%;
+    right: 1.2vw;
+}
+
+#rightRingFinger {
+    right: 4.2vw;
+    top:38%;
+}
+
+#rightMiddleFinger {
+    right: 9vw;
+    top: 34%;
+}
+
+#rightPointerFinger {
+    right: 14vw;
+    top: 38%;
+}
+
+#rightThumb {
+    right: 19vw;
+    top: 56%;
+}

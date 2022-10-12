@@ -28,8 +28,8 @@ function Insert(props) {
     }
 
     let rightorwrong = true;
-    if(props.first) {
-        rightorwrong = <None/>
+    if (props.first) {
+        rightorwrong = <None />
     } else if (props.rightOrWrong) {
         rightorwrong = <Right />
     } else {
@@ -39,11 +39,18 @@ function Insert(props) {
     return (
 
         <div>
+
             <RandomLetter nums={props.tNum} />
             {rightorwrong}
 
             <KeyPressed keyDown={props.keyDown} />
             <br />
+
+            <div id="leftPinky" className='circle'></div>
+            <div id="leftRingFinger" className='circle'></div>
+            <div id="leftMiddleFinger" className='circle'></div>
+            <div id="leftPointerFinger" className='circle'></div>
+            <div id="leftThumb" className='circle'></div>
             <div className='bigdiv'>
                 <div className='handsContainer'>
                     <img src={leftHand} className="lefthand" alt='Left Hand'></img>
@@ -59,6 +66,11 @@ function Insert(props) {
                     <img src={rightHand} className="righthand" alt='Right Hand'></img>
                 </div>
             </div>
+            <div id="rightPinky" className='circle'></div>
+            <div id="rightRingFinger" className='circle'></div>
+            <div id="rightMiddleFinger" className='circle'></div>
+            <div id="rightPointerFinger" className='circle'></div>
+            <div id="rightThumb" className='circle'></div>
         </div>
     )
 }
