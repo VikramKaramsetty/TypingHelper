@@ -18,7 +18,8 @@ function Insert(props) {
             return () => {
                 window.removeEventListener('keydown', detectKeyDown);
             };
-        }, []);
+            // eslint-disable-next-line
+        }, []); 
 
         var detectKeyDown = (e) => { // what to do after detecting input
             props.keyDown(e);

@@ -1,8 +1,11 @@
 import React from 'react'
 import { motion } from 'framer-motion';
 import './Intermission1.css';
+import { useNavigate } from "react-router-dom";
+
 
 function Intermission1(props) {
+    let navigate = useNavigate();
     return (
         <motion.div
             className="inter"
@@ -15,8 +18,8 @@ function Intermission1(props) {
             <h2>Rights: {props.rights}    Incorrect: {props.incorrect}</h2>
             <h2>Percentage Correct: {props.perc}%</h2>
 
-            <div className='button'>
-                <button onClick={() => { window.location.reload(false)}}>Retry</button> <button>Next Step</button>
+            <div className='but'>
+                <button onClick={() => { window.location.reload(false)}} className='button-4'>Retry</button> <button className='button-4'  onClick={() => { navigate("/Second-Step") }}>Next Step</button>
             </div>
         </motion.div>
     )
