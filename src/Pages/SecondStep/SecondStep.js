@@ -1,21 +1,44 @@
-import { motion } from 'framer-motion';
-import React, { Component } from 'react';
-import './SecondStep';
+// import { motion } from 'framer-motion';
+import React, {useState,useEffect} from "react";
+import './SecondStep.css';
+import txt from './Words.txt';
+import Axios from "axios"; // Import Axios or use Fetch.
 
 function SecondStep() {
 
   //plan: make the word into a char array then make a subsequent style obj array of the same length and then when you use the map() function display every word you give the element a corresponding style in the style array
+  // make a position integer to hold the index that the person is on for them to type at
 
-  const words = [
-    "have",
-    "there",
-    "my",
-    "name",
-    "tame",
-    "hate",
-    "road",
-    "where"
-  ];
+  // const KeyPressed = props => {
+
+  //   useEffect(() => { // taking input and then removing it so it doesn't repeat 
+  //     window.addEventListener('keydown', detectKeyDown);
+  //     return () => {
+  //       window.removeEventListener('keydown', detectKeyDown);
+  //     };
+  //     // eslint-disable-next-line
+  //   }, []);
+
+  //   var detectKeyDown = (e) => { // what to do after detecting input
+
+  //   }
+
+  //   return <div></div>
+  // }
+
+
+
+  /* INPUT FROM FILE */
+  const [text, setText] = useState("");
+
+  useEffect(() => {
+    Axios(txt).then(res => setText(res.data)); // This will have your text inside data attribute
+  }, [])
+  console.log(text);
+
+  const words = text.split('\r\n');
+  console.log(words);
+  /* =========== */
 
   let wordInd = Math.floor(Math.random() * words.length); // 0-words.length-1
 
@@ -29,10 +52,12 @@ function SecondStep() {
     charString.push(words[wordInd].charAt(i));
   }
 
+
   const fullWord = charString.map((letter, ind) => {
     console.log(ind);
-     return (<h1 className='unTyped' key={letter}>{letter}</h1>)
+    return (<h1 className={styles[ind]} key={letter}>{letter}</h1>)
   });
+
 
 
   return (
@@ -43,11 +68,10 @@ function SecondStep() {
     //   animate={{ opacity: 1, x: 0 }}
     //   exit={{ opacity: 0, x: 100 }}
     // >
-    <div className='unTyped'>
-
+    <div className='container'>
       {fullWord}
-      <h1 className='untyped'>aaaa</h1>
     </div>
+
     // </motion.div>
   )
 }
