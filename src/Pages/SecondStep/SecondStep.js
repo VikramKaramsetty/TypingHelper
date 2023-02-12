@@ -35,9 +35,8 @@ function SecondStep() {
     var detectKeyDown = (e) => { // what to do after detecting input
       changeWord(pointer,e);
       setPointer(pointer+1);
-      console.log(e + " " + pointer)
+      console.log(e)
       // console.log(e);
-      // setPointer(pointer+1);
     }
 
     return <div></div>
