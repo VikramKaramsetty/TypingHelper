@@ -5,9 +5,29 @@
     size: 20px 36;
 }
 
+.container {
+    font-size: 30px;
+    text-align: center;
+    margin-top: 2%;
+}
+
 .typed {
+    color:rgb(12, 20, 141);
+    font-size: 300%;
+    font-weight: 100;
+    size: 20px 36;
+}
+
+.correct {
+    color:rgb(3, 239, 109);
+    font-size: 300%;
+    font-weight: 100;
+    size: 20px 36;
+}
+
+.wrong {
     color:rgb(239, 3, 3);
-    font-size: 210%;
+    font-size: 300%;
     font-weight: 100;
     size: 20px 36;
 }
