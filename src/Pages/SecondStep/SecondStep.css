@@ -36,3 +36,118 @@
     display:inline;
     
 }
+
+/* IMPORTED FROM INSERT.CSS FOR HAND */
+
+
+.bigdiv {
+    display:flex;
+    flex-direction: row;
+    /* text-align: center; */
+    justify-content: center;    
+}
+
+.bigdiv img {
+    width:26%;
+    position: absolute;
+}
+
+.lefthand {
+    width:26%;
+    position: absolute;
+    left: 0%;
+    top: 40%;
+}
+
+.righthand {
+    width:26%;
+    position: absolute;
+    right: 0%;
+    top: 40%;
+}
+
+.info {
+    font-size: 25px;
+    text-align: center;
+}
+
+
+/* CIRCLE STYLING */
+.circle {
+    height: 3vw;
+    width: 3vw;
+    background-color: rgba(148, 147, 145, 0.897);
+    border-radius: 50%;
+    display: inline-block;
+    border-left: 5px solid rgba(91, 91, 91, 0.68);
+    border-right: 5px solid rgb(91, 91, 91, 0.68);
+    border-top: 5px solid rgb(91, 91, 91, 0.68);
+    border-bottom: 5px solid rgb(91, 91, 91, 0.68);
+    position:absolute;
+}
+
+.filledCircle {
+    height: 3vw;
+    width: 3vw;
+    background-color: rgb(0, 0, 0);
+    border-radius: 50%;
+    display: inline-block;
+    border-left: 5px solid rgba(91, 91, 91, 0.68);
+    border-right: 5px solid rgb(91, 91, 91, 0.68);
+    border-top: 5px solid rgb(91, 91, 91, 0.68);
+    border-bottom: 5px solid rgb(91, 91, 91, 0.68);
+    position:absolute;
+}
+
+/* LEFT HAND */
+#leftPinky {    
+    top:46%;
+    left: 2.8vw;
+}
+
+#leftRingFinger {
+    left:6vw;
+    top:38%;
+}
+
+#leftMiddleFinger {
+    left: 10.5vw;
+    top: 34%;
+}
+
+#leftPointerFinger {
+    left: 15.8vw;
+    top: 38%;
+}
+
+#leftThumb {
+    left: 20vw;
+    top: 56%;
+}
+
+/* RIGHT HAND */
+
+#rightPinky {    
+    top:47%;
+    right: 1.2vw;
+}
+
+#rightRingFinger {
+    right: 4.2vw;
+    top:38%;
+}
+
+#rightMiddleFinger {
+    right: 9vw;
+    top: 34%;
+}
+
+#rightPointerFinger {
+    right: 14vw;
+    top: 38%;
+}
+
+#rightThumb {
+    right: 19vw;
+    top: 56%;
+}
