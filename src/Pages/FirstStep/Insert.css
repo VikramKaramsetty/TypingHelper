@@ -1,5 +1,3 @@
-
-
 .bigdiv {
     display:flex;
     flex-direction: row;
@@ -16,6 +14,10 @@
     position: absolute;
     left: 0%;
     top: 40%;
+}
+
+.handHide {
+    opacity: 0;
 }
 
 .righthand {

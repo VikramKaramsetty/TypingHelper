@@ -7,7 +7,8 @@ import './Insert.css'
 import rightHand from '../../resources/RightHand.png';
 import leftHand from '../../resources/LeftHand.png';
 import None from '../../components/RightOrWrong/None';
-
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Switch from '@mui/material/Switch';
 
 function Insert(props) {
 
@@ -37,25 +38,24 @@ function Insert(props) {
         rightorwrong = <Wrong />
     }
 
-    let leftPinky = 'circle'
-    let leftRingFinger = 'circle'
-    let leftMiddleFinger = 'circle'
-    let leftPointerFinger = 'circle'
-    let leftThumb = 'circle'
-    let rightPinky = 'circle'
-    let rightRingFinger = 'circle'
-    let rightMiddleFinger = 'circle'
-    let rightPointerFinger = 'circle'
-    let rightThumb = 'circle'
+    let leftPinky = 'circle';
+    let leftRingFinger = 'circle';
+    let leftMiddleFinger = 'circle';
+    let leftPointerFinger = 'circle' ;
+    let leftThumb = 'circle' ;
+    let rightPinky = 'circle' ;
+    let rightRingFinger = 'circle';
+    let rightMiddleFinger = 'circle' ;
+    let rightPointerFinger = 'circle';
+    let rightThumb = 'circle';
     
     let num = props.tNum;
 
     const mql = window.matchMedia('(max-width: 100px)');
-    console.log(mql)
 
 
     if(num === 0) { //a
-        leftPinky = 'filledCircle'
+        leftPinky = 'filledCircle ';
     } else if(num === 1) { // b
         leftPointerFinger = 'filledCircle'
         rightPointerFinger = 'filledCircle'
@@ -105,13 +105,29 @@ function Insert(props) {
         leftRingFinger = 'filledCircle'
     } else if(num === 24) { //y
         rightPointerFinger = 'filledCircle'
-        leftPointerFinger = 'filledCircle'
     } else if(num === 25) { //z
         leftPinky = 'filledCircle'
-    } else if(num === 26) {
+    } else if(num === 26) { // spacebar
         leftThumb = 'filledCircle'
     }
+    const [checked, setChecked] = React.useState(false);
+    if(checked) {
+        rightRingFinger = 'hide';
+        rightMiddleFinger = 'hide';
+        rightPinky = 'hide';
+        rightThumb = 'hide';
+        rightPointerFinger = 'hide'
+        leftRingFinger = 'hide';
+        leftMiddleFinger = 'hide';
+        leftPinky = 'hide';
+        leftThumb = 'hide';
+        leftPointerFinger = 'hide'
+    } else {
+    }
 
+    const onChecked = (event) => { // updating state
+        setChecked(event.target.checked);
+    }
 
     return (
 
@@ -123,7 +139,7 @@ function Insert(props) {
             <KeyPressed keyDown={props.keyDown} />
             <br />
 
-            <div id="leftPinky" className={leftPinky}></div>
+            <div id="leftPinky" className={leftPinky }></div>
             <div id="leftRingFinger" className={leftRingFinger}></div>
             <div id="leftMiddleFinger" className={leftMiddleFinger}></div>
             <div id="leftPointerFinger" className={leftPointerFinger}></div>
@@ -137,8 +153,14 @@ function Insert(props) {
                     Correct: {props.rights}         Incorrect: {props.incorrect}
                     <br />
                     Percentage Correct: {props.perc}%
-                </div>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <FormControlLabel control={<Switch size="large" color="default" checked={checked} onChange={onChecked}/>} label={<h1>Hide Fingers</h1>} />
 
+                </div>
+                
                 <div className='handsContainer'>
                     <img src={rightHand} className="righthand" alt='Right Hand'></img>
                 </div>
