@@ -24,31 +24,36 @@
     top: 40%;
 }
 
+.info {
+    font-size: 25px;
+    text-align: center;
+}
+
 
 /* CIRCLE STYLING */
 .circle {
-    height: 15px;
-    width: 15px;
+    height: 3vw;
+    width: 3vw;
     background-color: rgba(148, 147, 145, 0.897);
     border-radius: 50%;
     display: inline-block;
-    border-left: 2.5px solid rgba(91, 91, 91, 0.68);
-    border-right: 2.5px solid rgb(91, 91, 91, 0.68);
-    border-top: 2.5px solid rgb(91, 91, 91, 0.68);
-    border-bottom: 2.5px solid rgb(91, 91, 91, 0.68);
+    border-left: 5px solid rgba(91, 91, 91, 0.68);
+    border-right: 5px solid rgb(91, 91, 91, 0.68);
+    border-top: 5px solid rgb(91, 91, 91, 0.68);
+    border-bottom: 5px solid rgb(91, 91, 91, 0.68);
     position:absolute;
 }
 
 .filledCircle {
-    height: 15px;
-    width: 15px;
+    height: 3vw;
+    width: 3vw;
     background-color: rgb(0, 0, 0);
     border-radius: 50%;
     display: inline-block;
-    border-left: 2.5px solid rgba(91, 91, 91, 0.68);
-    border-right: 2.5px solid rgb(91, 91, 91, 0.68);
-    border-top: 2.5px solid rgb(91, 91, 91, 0.68);
-    border-bottom: 2.5px solid rgb(91, 91, 91, 0.68);
+    border-left: 5px solid rgba(91, 91, 91, 0.68);
+    border-right: 5px solid rgb(91, 91, 91, 0.68);
+    border-top: 5px solid rgb(91, 91, 91, 0.68);
+    border-bottom: 5px solid rgb(91, 91, 91, 0.68);
     position:absolute;
 }
 
