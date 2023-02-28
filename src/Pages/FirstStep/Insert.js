@@ -122,8 +122,7 @@ function Insert(props) {
         leftPinky = 'hide';
         leftThumb = 'hide';
         leftPointerFinger = 'hide'
-    } else {
-    }
+    } 
 
     const onChecked = (event) => { // updating state
         setChecked(event.target.checked);
