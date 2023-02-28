@@ -5,6 +5,9 @@ import txt from './Words.txt';
 import Axios from "axios"; // Import Axios or use Fetch.
 import rightHand from '../../resources/RightHand.png';
 import leftHand from '../../resources/LeftHand.png';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Switch from '@mui/material/Switch';
+import { Button } from "@mui/material";
 
 function SecondStep() {
 
@@ -13,6 +16,7 @@ function SecondStep() {
 
   /* INPUT FROM FILE */
   const [text, setText] = useState("");
+
 
   useEffect(() => {
     Axios(txt).then(res => setText(res.data)); // This will have your text inside data attribute
@@ -37,7 +41,6 @@ function SecondStep() {
     var detectKeyDown = (e) => { // what to do after detecting input
       changeWord(pointer, e);
       setPointer(pointer + 1);
-      console.log(e)
       // console.log(e);
     }
 
@@ -46,6 +49,7 @@ function SecondStep() {
 
 
   const badKeys = ['Control', 'Alt', 'Enter', 'Shift'];
+  let totalWords = 0;
   // USE A STATE
   function changeWord(index, keyInfo) {
     const updateStyle = styles.map((value, ind) => {
@@ -79,8 +83,9 @@ function SecondStep() {
       }
       setPointer(0);
       setStyles(newStyle);
+      totalWords+=1;
     }, 500);
-
+    
   }
 
 
@@ -101,7 +106,6 @@ function SecondStep() {
 
   const fullWord = charString.map((letter, ind) => {
     if (pointer == words[wordInd].length) {
-      console.log("aa")
       updateWord();
       return (<h1 className={styles[ind]} key={ind}>{letter}</h1>)
     } else {
@@ -110,7 +114,7 @@ function SecondStep() {
 
   });
 
-  let num = words[wordInd].charCodeAt(pointer)-97;
+  let num = words[wordInd].charCodeAt(pointer) - 97;
   let leftPinky = 'circle'
   let leftRingFinger = 'circle'
   let leftMiddleFinger = 'circle'
@@ -121,7 +125,6 @@ function SecondStep() {
   let rightMiddleFinger = 'circle'
   let rightPointerFinger = 'circle'
   let rightThumb = 'circle'
-  console.log(num);
 
   if (num === 0) { //a
     leftPinky = 'filledCircle'
@@ -180,7 +183,33 @@ function SecondStep() {
   } else if (num === 26) {
     leftThumb = 'filledCircle'
   }
+  const [checked, setChecked] = React.useState(false);
+  if (checked) {
+    rightRingFinger = 'hide';
+    rightMiddleFinger = 'hide';
+    rightPinky = 'hide';
+    rightThumb = 'hide';
+    rightPointerFinger = 'hide'
+    leftRingFinger = 'hide';
+    leftMiddleFinger = 'hide';
+    leftPinky = 'hide';
+    leftThumb = 'hide';
+    leftPointerFinger = 'hide'
+  }
 
+  const onChecked = (event) => { // updating state
+    setChecked(event.target.checked);
+  }
+
+  const[popup, setPopup] = useState("popup");
+
+  // not working
+  // if(totalWords > 3) {
+  //   setPopup("hide");
+  //   console.log("ALAKJDF")
+  // } else {
+  //   setPopup("popup");
+  // }
 
   return (
     // <motion.div
@@ -204,6 +233,21 @@ function SecondStep() {
 
         <KeyPressed />
         {fullWord}
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <FormControlLabel control={<Switch size="large" color="default" checked={checked} onChange={onChecked} />} label={<h1>Hide Fingers</h1>} />
+        <div className={popup}>
+          <h3>Satisfied? Challenge yourself in step 3!</h3>
+          <button className="button-4">STEP 3</button>
+        </div>
 
         <div className='handsContainer'>
           <img src={rightHand} className="righthand" alt='Right Hand'></img>
