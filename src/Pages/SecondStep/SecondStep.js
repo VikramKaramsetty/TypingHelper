@@ -7,7 +7,6 @@ import rightHand from '../../resources/RightHand.png';
 import leftHand from '../../resources/LeftHand.png';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
-import { Button } from "@mui/material";
 
 function SecondStep() {
 
@@ -27,10 +26,12 @@ function SecondStep() {
 
   let [pointer, setPointer] = useState(0);
   let [styles, setStyles] = useState([]);
-
+  // let timerStats = [];
+  // let start;
   const KeyPressed = props => {
-
+    
     useEffect(() => { // taking input and then removing it so it doesn't repeat 
+      // start = performance.now();
       window.addEventListener('keydown', detectKeyDown);
       return () => {
         window.removeEventListener('keydown', detectKeyDown);
@@ -75,6 +76,9 @@ function SecondStep() {
 
 
   function updateWord() {
+    // const end = performance.now();
+    // console.log(`Execution time: ${end - start} ms`);
+    
     setTimeout(() => { // adding a timeout so you can see last letter
       setWordInd(Math.floor(Math.random() * words.length));
       let newStyle = [];
@@ -195,7 +199,7 @@ function SecondStep() {
     leftPinky = 'hide';
     leftThumb = 'hide';
     leftPointerFinger = 'hide'
-  }
+  } 
 
   const onChecked = (event) => { // updating state
     setChecked(event.target.checked);
