@@ -26,6 +26,7 @@ function SecondStep() {
 
   let [pointer, setPointer] = useState(0);
   let [styles, setStyles] = useState([]);
+  const [totalWords, setTotalWords] = useState(0);
   // let timerStats = [];
   // let start;
   const KeyPressed = props => {
@@ -40,9 +41,15 @@ function SecondStep() {
     }, []);
 
     var detectKeyDown = (e) => { // what to do after detecting input
-      changeWord(pointer, e);
-      setPointer(pointer + 1);
-      // console.log(e);
+      
+      if(e.key === "Backspace" && pointer != 0) { // backspace key goes back one
+        // change prev letter func
+        changeWord(pointer-1, e);
+        setPointer(pointer -1);
+      } else if(e.key != "Backspace") {
+        changeWord(pointer, e);
+        setPointer(pointer + 1);
+      }
     }
 
     return <div></div>
@@ -50,7 +57,6 @@ function SecondStep() {
 
 
   const badKeys = ['Control', 'Alt', 'Enter', 'Shift'];
-  let totalWords = 0;
   // USE A STATE
   function changeWord(index, keyInfo) {
     const updateStyle = styles.map((value, ind) => {
@@ -61,7 +67,12 @@ function SecondStep() {
       //   return "unTyped";
       // } 
       // ===============
-      if (ind === index && keyInfo.key == words[wordInd].charAt(pointer)) { // seeing if its the right letter
+      
+      if(ind === index && keyInfo.key === "Backspace") { // goes back one
+        return "unTyped";
+      }
+
+      if (ind === index && keyInfo.key === words[wordInd].charAt(pointer)) { // seeing if its the right letter
         // Increment the clicked counter
         return "correct";
       } else if (ind === index) { // seeing if its the right letter
@@ -71,6 +82,7 @@ function SecondStep() {
         return styles[ind]
       }
     });
+
     setStyles(updateStyle);
   }
 
@@ -87,7 +99,7 @@ function SecondStep() {
       }
       setPointer(0);
       setStyles(newStyle);
-      totalWords+=1;
+      setTotalWords(totalWords+1);
     }, 500);
     
   }
@@ -205,15 +217,14 @@ function SecondStep() {
     setChecked(event.target.checked);
   }
 
-  const[popup, setPopup] = useState("popup");
+  let popup = "popup"
 
   // not working
-  // if(totalWords > 3) {
-  //   setPopup("hide");
-  //   console.log("ALAKJDF")
-  // } else {
-  //   setPopup("popup");
-  // }
+  if(totalWords < 10) {
+    popup = "hide";
+  } else {
+    popup = "popup";
+  }
 
   return (
     // <motion.div
