@@ -1,3 +1,8 @@
+/* experimental style build button */
+#experimental {
+    position: absolute;
+}
+
 .unTyped{
     color:rgb(159, 107, 107);
     font-size: 300%;

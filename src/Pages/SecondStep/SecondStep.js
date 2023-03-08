@@ -7,6 +7,7 @@ import rightHand from '../../resources/RightHand.png';
 import leftHand from '../../resources/LeftHand.png';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
+import { useNavigate } from "react-router-dom";
 
 function SecondStep() {
 
@@ -30,7 +31,7 @@ function SecondStep() {
   // let timerStats = [];
   // let start;
   const KeyPressed = props => {
-    
+
     useEffect(() => { // taking input and then removing it so it doesn't repeat 
       // start = performance.now();
       window.addEventListener('keydown', detectKeyDown);
@@ -41,12 +42,12 @@ function SecondStep() {
     }, []);
 
     var detectKeyDown = (e) => { // what to do after detecting input
-      
-      if(e.key === "Backspace" && pointer != 0) { // backspace key goes back one
+
+      if (e.key === "Backspace" && pointer !== 0) { // backspace key goes back one
         // change prev letter func
-        changeWord(pointer-1, e);
-        setPointer(pointer -1);
-      } else if(e.key != "Backspace") {
+        changeWord(pointer - 1, e);
+        setPointer(pointer - 1);
+      } else if (e.key !== "Backspace") {
         changeWord(pointer, e);
         setPointer(pointer + 1);
       }
@@ -56,7 +57,7 @@ function SecondStep() {
   }
 
 
-  const badKeys = ['Control', 'Alt', 'Enter', 'Shift'];
+  // const badKeys = ['Control', 'Alt', 'Enter', 'Shift'];
   // USE A STATE
   function changeWord(index, keyInfo) {
     const updateStyle = styles.map((value, ind) => {
@@ -67,8 +68,8 @@ function SecondStep() {
       //   return "unTyped";
       // } 
       // ===============
-      
-      if(ind === index && keyInfo.key === "Backspace") { // goes back one
+
+      if (ind === index && keyInfo.key === "Backspace") { // goes back one
         return "unTyped";
       }
 
@@ -90,7 +91,7 @@ function SecondStep() {
   function updateWord() {
     // const end = performance.now();
     // console.log(`Execution time: ${end - start} ms`);
-    
+
     setTimeout(() => { // adding a timeout so you can see last letter
       setWordInd(Math.floor(Math.random() * words.length));
       let newStyle = [];
@@ -99,9 +100,9 @@ function SecondStep() {
       }
       setPointer(0);
       setStyles(newStyle);
-      setTotalWords(totalWords+1);
-    }, 500);
-    
+      setTotalWords(totalWords + 1);
+    }, 200);
+
   }
 
 
@@ -121,7 +122,7 @@ function SecondStep() {
 
 
   const fullWord = charString.map((letter, ind) => {
-    if (pointer == words[wordInd].length) {
+    if (pointer === words[wordInd].length) {
       updateWord();
       return (<h1 className={styles[ind]} key={ind}>{letter}</h1>)
     } else {
@@ -211,7 +212,7 @@ function SecondStep() {
     leftPinky = 'hide';
     leftThumb = 'hide';
     leftPointerFinger = 'hide'
-  } 
+  }
 
   const onChecked = (event) => { // updating state
     setChecked(event.target.checked);
@@ -220,11 +221,12 @@ function SecondStep() {
   let popup = "popup"
 
   // not working
-  if(totalWords < 10) {
+  if (totalWords < 10) {
     popup = "hide";
   } else {
     popup = "popup";
   }
+  let navigate = useNavigate();
 
   return (
     // <motion.div
@@ -235,6 +237,9 @@ function SecondStep() {
     //   exit={{ opacity: 0, x: 100 }}
     // >
     <div>
+      <div id="experimental">
+        <button onClick={() => { navigate("/Step2Game") }}>Experimental Extended Game!</button>
+      </div>
       <div id="leftPinky" className={leftPinky}></div>
       <div id="leftRingFinger" className={leftRingFinger}></div>
       <div id="leftMiddleFinger" className={leftMiddleFinger}></div>

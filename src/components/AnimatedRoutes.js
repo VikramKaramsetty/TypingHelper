@@ -6,6 +6,7 @@ import Intermission1 from './Intermission 1/Intermission1';
 
 import { AnimatePresence } from 'framer-motion';
 import SecondStep from '../Pages/SecondStep/SecondStep';
+import Step2Game from '../Pages/Experimental/Step2Game';
 
 function AnimatedRoutes() {
     const location = useLocation();
@@ -16,6 +17,7 @@ function AnimatedRoutes() {
                 <Route path="/First-Step" element={<FirstStep />} />
                 <Route path="/Intermission1" element={<Intermission1 />} />
                 <Route path="/Second-Step" element={<SecondStep />} />
+                <Route path="/Step2Game" element = {<Step2Game />} />
             </Routes>
         </AnimatePresence>
     )
