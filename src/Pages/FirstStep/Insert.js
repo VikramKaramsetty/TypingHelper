@@ -51,7 +51,7 @@ function Insert(props) {
     
     let num = props.tNum;
 
-    const mql = window.matchMedia('(max-width: 100px)');
+    // const mql = window.matchMedia('(max-width: 100px)');
 
 
     if(num === 0) { //a

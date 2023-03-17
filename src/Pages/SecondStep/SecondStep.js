@@ -194,11 +194,11 @@ function SecondStep() {
     leftRingFinger = 'filledCircle'
   } else if (num === 24) { //y
     rightPointerFinger = 'filledCircle'
-    leftPointerFinger = 'filledCircle'
   } else if (num === 25) { //z
     leftPinky = 'filledCircle'
-  } else if (num === 26) {
+  } else if (num === 26) { // space
     leftThumb = 'filledCircle'
+    rightThumb = 'filledCircle'
   }
   const [checked, setChecked] = React.useState(false);
   if (checked) {
